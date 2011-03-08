@@ -1,0 +1,81 @@
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (15.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (31.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateProducts (20110308145926)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110308145926')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("products")
+
+
+Started GET "/products" for 127.0.0.1 at 2011-03-08 16:04:12 +0100
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+Rendered products/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 1000ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2011-03-08 16:04:27 +0100
+  Processing by ProductsController#new as HTML
+Rendered products/_form.html.erb (875.0ms)
+Rendered products/new.html.erb within layouts/application (906.2ms)
+Completed 200 OK in 1062ms (Views: 984.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2011-03-08 16:09:24 +0100
+  Processing by ProductsController#new as HTML
+Rendered products/_form.html.erb (859.4ms)
+Rendered products/new.html.erb within layouts/application (875.0ms)
+Completed   in 1016ms
+
+ActionView::Template::Error (undefined local variable or method `rows' for #<#<Class:0x1a28ae0>:0x1a27568>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :description %><br />
+    20:     <%= f.text_area :description, rows => 6 %>
+    21:   </div>
+    22:   <div class="field">
+    23:     <%= f.label :image_url %><br />
+  app/views/products/_form.html.erb:20:in `block in _app_views_products__form_html_erb__1035555866_13646760__462418614'
+  app/views/products/_form.html.erb:1:in `_app_views_products__form_html_erb__1035555866_13646760__462418614'
+  app/views/products/new.html.erb:3:in `_app_views_products_new_html_erb___608571000_13684164_314274203'
+  app/controllers/products_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (78.1ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2011-03-08 16:10:06 +0100
+  Processing by ProductsController#new as HTML
+Rendered products/_form.html.erb (62.5ms)
+Rendered products/new.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 234ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2011-03-08 16:10:19 +0100
+  Processing by ProductsController#new as HTML
+Rendered products/_form.html.erb (46.9ms)
+Rendered products/new.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 406ms (Views: 156.2ms | ActiveRecord: 0.0ms)
