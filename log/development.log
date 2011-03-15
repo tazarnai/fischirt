@@ -79,3 +79,75 @@ Started GET "/products/new" for 127.0.0.1 at 2011-03-08 16:10:19 +0100
 Rendered products/_form.html.erb (46.9ms)
 Rendered products/new.html.erb within layouts/application (78.1ms)
 Completed 200 OK in 406ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (15.6ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110308145926')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "products" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES ('Web Design for Developers', '<p>
+ <em>Web Design for Developers</em> will show you how to make your
+ web-based application look professionally designed. We''ll help you
+ learn how to pick the right colors and fonts, avoid costly interface
+ and accessibility mistakes -- your application will really come alive.
+ We''ll also walk you through some common Photoshop and CSS techniques
+ and work through a web site redesign, taking a new design from concept
+ all the way to implementation.
+ </p>', '/images/wd4d.jpg', 42.95, '2011-03-15 14:15:53.562500', '2011-03-15 14:15:53.562500')[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES ('Programming Ruby 1.9', '<p>
+ Ruby is the fastest growing and most exciting dynamic language
+ out there. If you need to get working programs delivered fast,
+ you should add Ruby to your toolbox.
+ </p>', '/images/ruby.jpg', 49.5, '2011-03-15 14:15:53.750000', '2011-03-15 14:15:53.750000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at") VALUES ('Rails Test Prescriptions', '<p>
+ <em>Rails Test Prescriptions</em> is a comprehensive guide to testing
+ Rails applications, covering Test-Driven Development from both a
+ theoretical perspective (why to test) and from a practical perspective
+ (how to test effectively). It covers the core Rails testing tools and
+ procedures for Rails 2 and Rails 3, and introduces popular add-ons,
+ including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
+ </p>', '/images/rtp.jpg', 43.75, '2011-03-15 14:15:53.781250', '2011-03-15 14:15:53.781250')[0m
+
+
+Started GET "/products" for 127.0.0.1 at 2011-03-15 15:17:18 +0100
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products"[0m
+Rendered products/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 953ms (Views: 296.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2011-03-15 15:40:26 +0100
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (15.6ms)[0m  SELECT "products".* FROM "products"
+Rendered products/index.html.erb within layouts/application (1234.4ms)
+Completed 200 OK in 1359ms (Views: 1281.2ms | ActiveRecord: 15.6ms)
