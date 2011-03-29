@@ -2,13 +2,26 @@
 <html>
 <head>
   <title>Fischirt</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "scaffold" %>
+  <%= stylesheet_link_tag "fischirt", :media => "all" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div id="banner" >
+		<%= image_tag("logo.gif") %>
+		<%= @page_title || "Fischin for a Fischirt" %>
+	</div>
+	<div id="columns" >
+		<div id="side" >
+			<%= link_to 'Home', store_url() %><br />
+			<a href="http://www..../faq" >Questions</a><br />
+			<a href="http://www..../news" >News</a><br />
+			<a href="http://www..../contact" >Contact</a><br />
+		</div>
+		<div id="main" >
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>

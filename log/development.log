@@ -448,3 +448,284 @@ Completed 200 OK in 1359ms (Views: 1281.2ms | ActiveRecord: 15.6ms)
 [0m
   [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
   [1m[36mSQL (31.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110308145926')[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:05:40 +0200
+  Processing by StoreController#index as HTML
+Rendered store/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:09:32 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (31.2ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (937.5ms)
+Completed 200 OK in 2234ms (Views: 1031.2ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:19:01 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (15.6ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 250ms (Views: 171.9ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:30:59 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 312ms (Views: 203.1ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/store" for 127.0.0.1 at 2011-03-29 15:31:05 +0200
+
+ActionController::RoutingError (No route matches "/store"):
+  
+
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/store" for 127.0.0.1 at 2011-03-29 15:33:55 +0200
+
+ActionController::RoutingError (No route matches "/store"):
+  
+
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:33:59 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (15.6ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+ERROR: compiling _app_views_layouts_application_html_erb___526000885_14827200__1014796027 RAISED C:/Documents and Settings/Tarik/My Documents/HSZ-T/WebProgrammierung2/projects/fischirt/app/views/layouts/application.html.erb:17: syntax error, unexpected tASSOC, expecting keyword_end
+			<a href="'); :url => store ;@output_buffer.safe_c...
+			                    ^
+Function body:           def _app_views_layouts_application_html_erb___526000885_14827200__1014796027(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "layouts/application";_old_output_buffer = @output_buffer;;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<!DOCTYPE html>
+<html>
+<head>
+  <title>Fischirt</title>
+  ');@output_buffer.append= ( stylesheet_link_tag "scaffold" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( stylesheet_link_tag "fischirt", :media => "all" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( javascript_include_tag :defaults );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( csrf_meta_tag );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</head>
+<body>
+	<div id="banner" >
+		');@output_buffer.append= ( image_tag("logo.png") );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		');@output_buffer.append= ( @page_title || "Pragmatic Bookshelf" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('	</div>
+	<div id="columns" >
+		<div id="side" >
+			<a href="'); :url => store ;@output_buffer.safe_concat('" >Home</a><br />
+			<a href="http://www..../faq" >Questions</a><br />
+			<a href="http://www..../news" >News</a><br />
+			<a href="http://www..../contact" >Contact</a><br />
+		</div>
+		<div id="main" >
+			');@output_buffer.append= ( yield );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		</div>
+	</div>
+</body>
+</html>
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_view/template.rb:255:in `module_eval'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_view/template.rb:255:in `compile'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_view/template.rb:134:in `block in render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/notifications.rb:54:in `instrument'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_view/template.rb:127:in `render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_view/render/layouts.rb:80:in `_render_layout'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_view/render/rendering.rb:62:in `block in _render_template'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/notifications.rb:52:in `block in instrument'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/notifications.rb:52:in `instrument'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_view/render/rendering.rb:56:in `_render_template'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_view/render/rendering.rb:26:in `render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/rendering.rb:115:in `_render_template'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/rendering.rb:109:in `render_to_body'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/rendering.rb:102:in `render_to_string'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/rendering.rb:93:in `render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/rendering.rb:17:in `render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+C:/Ruby192/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.4/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/instrumentation.rb:39:in `render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/base.rb:150:in `process_action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/rendering.rb:11:in `process_action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/callbacks.rb:435:in `_run__728912853__process_action__58819422__callbacks'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/callbacks.rb:93:in `run_callbacks'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/callbacks.rb:17:in `process_action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/notifications.rb:52:in `block in instrument'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/notifications.rb:52:in `instrument'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/rescue.rb:17:in `process_action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/base.rb:119:in `process'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/abstract_controller/rendering.rb:41:in `process'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal.rb:138:in `dispatch'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_controller/metal.rb:178:in `block in action'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/routing/route_set.rb:62:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/routing/route_set.rb:27:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `block in call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/routing/route_set.rb:492:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/head.rb:14:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/flash.rb:182:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/cookies.rb:302:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.4/lib/active_record/query_cache.rb:32:in `block in call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.4/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.4/lib/active_record/query_cache.rb:12:in `cache'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.4/lib/active_record/query_cache.rb:31:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:354:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.4/lib/rails/rack/logger.rb:13:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.4/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/static.rb:30:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.4/lib/rails/application.rb:168:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.4/lib/rails/application.rb:77:in `method_missing'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.4/lib/rails/rack/log_tailer.rb:14:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+C:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+C:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+C:/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered store/index.html.erb within layouts/application (328.1ms)
+Completed   in 516ms
+
+ActionView::Template::Error (C:/Documents and Settings/Tarik/My Documents/HSZ-T/WebProgrammierung2/projects/fischirt/app/views/layouts/application.html.erb:17: syntax error, unexpected tASSOC, expecting keyword_end
+			<a href="'); :url => store ;@output_buffer.safe_c...
+			                    ^):
+    14: 	</div>
+    15: 	<div id="columns" >
+    16: 		<div id="side" >
+    17: 			<a href="<% :url => store %>" >Home</a><br />
+    18: 			<a href="http://www..../faq" >Questions</a><br />
+    19: 			<a href="http://www..../news" >News</a><br />
+    20: 			<a href="http://www..../contact" >Contact</a><br />
+  
+
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (109.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:43:57 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (640.6ms)
+Completed   in 953ms
+
+ActionView::Template::Error (undefined method `store' for #<#<Class:0x1e85c38>:0x1e84858>):
+    14: 	</div>
+    15: 	<div id="columns" >
+    16: 		<div id="side" >
+    17: 			<%= link_to 'Home', store() %>
+    18: 			<a href="http://www..../faq" >Questions</a><br />
+    19: 			<a href="http://www..../news" >News</a><br />
+    20: 			<a href="http://www..../contact" >Contact</a><br />
+  app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb___526000885_15996336__1014796027'
+
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (109.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:45:27 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (15.6ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 328ms (Views: 218.8ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:49:58 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 281ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:54:19 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (250.0ms)
+Completed 200 OK in 422ms (Views: 343.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:55:16 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 438ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:56:12 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 312ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:56:34 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 281ms (Views: 187.5ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:58:01 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 312ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:58:16 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 281ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 15:58:47 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 297ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 16:03:09 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 266ms (Views: 187.5ms | ActiveRecord: 15.6ms)

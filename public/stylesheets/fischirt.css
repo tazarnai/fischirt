@@ -64,6 +64,52 @@
   background:   #f8b0f8;
 }
 
+/* START:mainlayout */
+/* Styles for main page */
+
+#banner {
+  background: #2B65EC;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+  color: #0000A0;
+  text-align: center;
+}
+
+#banner img {
+  padding-left: 10px;		
+  float: left;
+  height: 50px;
+  width: 95px;
+}
+
+#columns {
+  background: #2554C7;
+}
+
+#main {
+  margin-left: 17em;
+  padding-top: 4ex;
+  padding-left: 2em;
+  background: #5CB3FF;
+}
+
+#side {
+  float: left;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 16em;
+  background: #2554C7;
+}
+
+#side a {
+  color: #bfb;
+  font-size: small;
+}
+/* END:mainlayout */
+
 /* An entry in the store catalog */
 
 #store  .entry {
