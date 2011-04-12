@@ -16,6 +16,10 @@
         border-bottom: 3px dotted #77d;
 }
 
+#store .entry form, #store .entry form div {
+        display: inline;
+}
+
 /* Styles for products/index */
 
 #product_list table {

@@ -729,3 +729,636 @@ Started GET "/" for 127.0.0.1 at 2011-03-29 16:03:09 +0200
   [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
 Rendered store/index.html.erb within layouts/application (109.4ms)
 Completed 200 OK in 266ms (Views: 187.5ms | ActiveRecord: 15.6ms)
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateProducts (20110308145926)
+Migrating to CreateCarts (20110405134203)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110405134203')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("carts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("products")[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateProducts (20110308145926)
+Migrating to CreateCarts (20110405134203)
+Migrating to CreateLineItems (20110405135016)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110405135016')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("carts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("line_items")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("products")
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-12 13:40:06 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (31.2ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (1656.2ms)
+Completed 200 OK in 3641ms (Views: 1765.6ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/carts" for 127.0.0.1 at 2011-04-12 13:40:25 +0200
+  Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts"
+Rendered carts/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 406ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-12 13:40:31 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (15.6ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 750ms (Views: 203.1ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2011-04-12 13:40:35 +0200
+  Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Ptuw17pyALV3GKIKhVQu38qajX2/ELB5siltrUEqgTw=", "product_id"=>"2"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-04-12 11:40:36.375000', '2011-04-12 11:40:36.375000')[0m
+Completed   in 609ms
+
+NameError (undefined local variable or method `cart_id' for #<LineItemsController:0x15f7fc8>):
+  app/controllers/application_controller.rb:10:in `rescue in current_cart'
+  app/controllers/application_controller.rb:7:in `current_cart'
+  app/controllers/line_items_controller.rb:43:in `create'
+
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (109.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-12 13:43:19 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 328ms (Views: 218.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2011-04-12 13:43:22 +0200
+  Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Ptuw17pyALV3GKIKhVQu38qajX2/ELB5siltrUEqgTw=", "product_id"=>"2"}
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-04-12 11:43:23.046875', '2011-04-12 11:43:23.046875')[0m
+Completed   in 266ms
+
+ActiveRecord::RecordNotFound (Couldn't find Product without an ID):
+  app/controllers/line_items_controller.rb:44:in `create'
+
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (93.8ms)
+
+
+Started GET "/line_items?product_id=2" for 127.0.0.1 at 2011-04-12 13:44:36 +0200
+  Processing by LineItemsController#index as HTML
+  Parameters: {"product_id"=>"2"}
+  [1m[35mLineItem Load (15.6ms)[0m  SELECT "line_items".* FROM "line_items"
+Rendered line_items/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 328ms (Views: 140.6ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-12 13:44:40 +0200
+  Processing by StoreController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered store/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 328ms (Views: 218.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/line_items?product_id=2" for 127.0.0.1 at 2011-04-12 13:44:43 +0200
+  Processing by LineItemsController#create as HTML
+  Parameters: {"authenticity_token"=>"Ptuw17pyALV3GKIKhVQu38qajX2/ELB5siltrUEqgTw=", "product_id"=>"2"}
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES ('2011-04-12 11:44:43.906250', '2011-04-12 11:44:43.906250')
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at") VALUES (2, 3, '2011-04-12 11:44:44.921875', '2011-04-12 11:44:44.921875')
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1[0m
+Redirected to http://localhost:3000/carts/3
+Completed 302 Found in 1219ms
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2011-04-12 13:44:45 +0200
+  Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1
+Rendered carts/show.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 266ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts/3/edit" for 127.0.0.1 at 2011-04-12 13:44:55 +0200
+  Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (15.6ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1[0m
+Rendered carts/_form.html.erb (46.9ms)
+Rendered carts/edit.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 312ms (Views: 203.1ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/carts/3" for 127.0.0.1 at 2011-04-12 13:44:59 +0200
+  Processing by CartsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ptuw17pyALV3GKIKhVQu38qajX2/ELB5siltrUEqgTw=", "commit"=>"Update Cart", "id"=>"3"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1
+Redirected to http://localhost:3000/carts/3
+Completed 302 Found in 156ms
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2011-04-12 13:44:59 +0200
+  Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1[0m
+Rendered carts/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 344ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts/3/edit" for 127.0.0.1 at 2011-04-12 13:45:02 +0200
+  Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1
+Rendered carts/_form.html.erb (62.5ms)
+Rendered carts/edit.html.erb within layouts/application (296.9ms)
+Completed 200 OK in 500ms (Views: 390.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2011-04-12 13:45:04 +0200
+  Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1[0m
+Rendered carts/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 266ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts" for 127.0.0.1 at 2011-04-12 13:45:10 +0200
+  Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts"
+Rendered carts/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 281ms (Views: 203.1ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/carts/1" for 127.0.0.1 at 2011-04-12 13:45:16 +0200
+  Processing by CartsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Ptuw17pyALV3GKIKhVQu38qajX2/ELB5siltrUEqgTw=", "id"=>"1"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 1 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 1)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "carts" WHERE "carts"."id" = 1[0m
+Redirected to http://localhost:3000/carts
+Completed 302 Found in 266ms
+
+
+Started GET "/carts" for 127.0.0.1 at 2011-04-12 13:45:17 +0200
+  Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts"
+Rendered carts/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 266ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2011-04-12 13:45:20 +0200
+  Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1[0m
+Rendered carts/show.html.erb within layouts/application (671.9ms)
+Completed 200 OK in 859ms (Views: 750.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-12 13:49:49 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 250ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts" for 127.0.0.1 at 2011-04-12 13:49:54 +0200
+  Processing by CartsController#index as HTML
+  [1m[36mCart Load (15.6ms)[0m  [1mSELECT "carts".* FROM "carts"[0m
+Rendered carts/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 188ms (Views: 125.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/carts/2" for 127.0.0.1 at 2011-04-12 13:49:57 +0200
+  Processing by CartsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 2 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 2)[0m
+Rendered carts/show.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 281ms (Views: 203.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts" for 127.0.0.1 at 2011-04-12 13:50:00 +0200
+  Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts"
+Rendered carts/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 203ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2011-04-12 13:50:02 +0200
+  Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1[0m
+  [1m[35mLineItem Load (0.0ms)[0m  SELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 3)
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1[0m
+Rendered carts/show.html.erb within layouts/application (328.1ms)
+Completed 200 OK in 609ms (Views: 531.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts/3/edit" for 127.0.0.1 at 2011-04-12 13:50:07 +0200
+  Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1
+Rendered carts/_form.html.erb (46.9ms)
+Rendered carts/edit.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 234ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/carts/3" for 127.0.0.1 at 2011-04-12 13:50:09 +0200
+  Processing by CartsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ptuw17pyALV3GKIKhVQu38qajX2/ELB5siltrUEqgTw=", "commit"=>"Update Cart", "id"=>"3"}
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1[0m
+Redirected to http://localhost:3000/carts/3
+Completed 302 Found in 125ms
+
+
+Started GET "/carts/3" for 127.0.0.1 at 2011-04-12 13:50:10 +0200
+  Processing by CartsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mCart Load (0.0ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = 3 LIMIT 1
+  [1m[36mLineItem Load (0.0ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE ("line_items".cart_id = 3)[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1
+Rendered carts/show.html.erb within layouts/application (640.6ms)
+Completed 200 OK in 766ms (Views: 703.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/carts" for 127.0.0.1 at 2011-04-12 13:50:13 +0200
+  Processing by CartsController#index as HTML
+  [1m[36mCart Load (0.0ms)[0m  [1mSELECT "carts".* FROM "carts"[0m
+Rendered carts/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 188ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-12 13:54:10 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 234ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405135016')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110308145926')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405134203')[0m
+
+
+Started GET "/products" for 127.0.0.1 at 2011-04-12 14:00:42 +0200
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (1296.9ms)
+Completed 200 OK in 2672ms (Views: 1359.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/" for 127.0.0.1 at 2011-04-12 14:00:54 +0200
+  Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered products/index.html.erb within layouts/application (187.5ms)
+Completed 200 OK in 406ms (Views: 296.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/2/edit" for 127.0.0.1 at 2011-04-12 14:01:08 +0200
+  Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1
+Rendered products/_form.html.erb (640.6ms)
+Rendered products/edit.html.erb within layouts/application (687.5ms)
+Completed 200 OK in 1109ms (Views: 765.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products/2" for 127.0.0.1 at 2011-04-12 14:01:16 +0200
+  Processing by ProductsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ptuw17pyALV3GKIKhVQu38qajX2/ELB5siltrUEqgTw=", "product"=>{"title"=>"Programming Ruby 1.9", "description"=>"<p>\r\n        Ruby is the fastest growing and most exciting dynamic language\r\n        out there. If you need to get working programs delivered fast,\r\n        you should add Ruby to your toolbox.\r\n</p>", "image_url"=>"/images/ruby.jpg", "price"=>"49.5"}, "commit"=>"Update Product", "id"=>"2"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1[0m
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products"."id" FROM "products" WHERE ("products"."title" = 'Programming Ruby 1.9') AND ("products".id <> 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "products"."id" FROM "products" WHERE ("products"."title" = 'Programming Ruby 1.9') AND ("products".id <> 2) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  UPDATE "products" SET "description" = '<p>
+ Ruby is the fastest growing and most exciting dynamic language
+ out there. If you need to get working programs delivered fast,
+ you should add Ruby to your toolbox.
+</p>', "updated_at" = '2011-04-12 12:01:17.843750' WHERE "products"."id" = 2
+Redirected to http://localhost:3000/products/2
+Completed 302 Found in 641ms
+
+
+Started GET "/products/2" for 127.0.0.1 at 2011-04-12 14:01:17 +0200
+  Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1[0m
+Rendered products/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 234ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405135016')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110308145926')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405134203')[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-12 14:04:57 +0200
+  Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" ORDER BY title
+Rendered store/index.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 234ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2011-04-12 14:05:04 +0200
+  Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY title[0m
+Rendered products/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 234ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2011-04-12 14:05:14 +0200
+  Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1
+Rendered products/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 219ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products/2/edit" for 127.0.0.1 at 2011-04-12 14:05:18 +0200
+  Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1[0m
+Rendered products/_form.html.erb (125.0ms)
+Rendered products/edit.html.erb within layouts/application (156.2ms)
+Completed 200 OK in 312ms (Views: 234.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products/2" for 127.0.0.1 at 2011-04-12 14:05:24 +0200
+  Processing by ProductsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ptuw17pyALV3GKIKhVQu38qajX2/ELB5siltrUEqgTw=", "product"=>{"title"=>"Programming Ruby 1.9", "description"=>"<p>\r\n        Ruby is the fastest growing and most exciting dynamic language\r\n        out there. If you need to get working programs delivered fast,\r\n        you should add Ruby to your toolbox.\r\n</p>", "image_url"=>"/images/ruby.jpg", "price"=>"49.5"}, "commit"=>"Update Product", "id"=>"2"}
+  [1m[35mProduct Load (0.0ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products"."id" FROM "products" WHERE ("products"."title" = 'Programming Ruby 1.9') AND ("products".id <> 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "products"."id" FROM "products" WHERE ("products"."title" = 'Programming Ruby 1.9') AND ("products".id <> 2) LIMIT 1
+Redirected to http://localhost:3000/products/2
+Completed 302 Found in 156ms
+
+
+Started GET "/products/2" for 127.0.0.1 at 2011-04-12 14:05:24 +0200
+  Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.0ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = 2 ORDER BY title LIMIT 1[0m
+Rendered products/show.html.erb within layouts/application (265.6ms)
+Completed 200 OK in 422ms (Views: 328.1ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405135016')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110308145926')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405134203')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405135016')[0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110308145926')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405134203')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405135016')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110308145926')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405134203')[0m
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (31.2ms)[0m  CREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405135016')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110308145926')
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110405134203')[0m
