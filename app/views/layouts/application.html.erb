@@ -13,7 +13,11 @@
 		<%= @page_title || "Fischin for a Fischirt" %>
 	</div>
 	<div id="columns" >
+
 		<div id="side" >
+            <%= hidden_div_if(@cart.line_items.empty?, :id => "cart" ) do %>
+                <%= render @cart %>
+            <% end %>
 			<%= link_to 'Home', store_url() %><br />
 			<a href="http://www..../faq" >Questions</a><br />
 			<a href="http://www..../news" >News</a><br />
